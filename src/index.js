@@ -7,12 +7,14 @@ import App from './components/App';
 import reducers from './reducers';
 import './index.css';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const store = createStoreWithMiddleware(reducers)
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk)
+)
 
 ReactDOM.render(
   <Provider store={store}>
-  <App />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

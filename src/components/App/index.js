@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Search from './Search'
-import '../App.css';
+import Search from '../Search'
+import './base.css';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="App">

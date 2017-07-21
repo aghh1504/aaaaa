@@ -1,9 +1,16 @@
 import { FETCH_CRS_CODE } from'../actions/Types'
 
-export default function(state=[], action){
+const defaultState = {
+  crsCodes: []
+}
+
+export default function(state = defaultState, action){
   switch (action.type) {
     case FETCH_CRS_CODE:
-      return [...state, ...action.payload]
-}
+      return {
+        ...state,
+        crsCodes: action.payload
+      }
+  }
   return state
 }

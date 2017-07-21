@@ -1,31 +1,32 @@
-
 body {
-  /*margin: 20px !important;*/
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.3em;
   color: #727B84;
   font-size: 76%;
+  width: 100%
+}
+html {
+  width: 100%
 }
 
 .panel {
-  /*display: flex;*/
+  display: flex;
   width: 100%;
+  height: 100vh;
+  flex-direction: row;
 }
 
 .form-search {
   display: inline-table;
-  height: 200px;
   background-color: #21314d;
   color: #fff;
   padding: 18px 0;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: 0 2px 0 0 #21314d!important;
-  padding: 20px;
-  /*position: fixed;*/
-  float: left;
-  margin: 20px;
+  padding: 10px;
+  margin: 10px;
 }
 
 label {
@@ -57,24 +58,37 @@ input {
   text-align: center;
   cursor: pointer;
 }
+.btn-result {
+  display: inline-block;
+  min-width: 4.2em;
+  padding: 0.55em;
+  border: 0;
+  margin: 0.55em 0;
+  background: #4d72b3;
+  color: #F4F3EE;
+  font-size: 1.125em;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5px;
+}
 
 .btn:hover {
   background: #CC7B7D;
   text-decoration: none;
 }
 .result {
-   padding: 1em;
-   float: left;
+   padding: 0 1em;
+   flex-grow: 1;
+   overflow: auto;
 }
 form {
-   padding: 1em;
   text-align: left;
 }
 
 table {
   width: 100%;
   padding: 2.5em;
-  margin: 2.5em 0;
+  margin: 10px 0;
   border-top: 5px solid #727B84;
   background: #F9F9F9;
   color: #000000;
@@ -91,7 +105,6 @@ tr:hover {
   -ms-transition:.5s;
   -moz-transition:.5s;
   -webkit-transition:.5s;
-  /* ...and now for the proper property */
   transition:.5s;
 }
 
@@ -106,55 +119,61 @@ td, th {
   border-right: 2px solid #727B84;
 }
 
-@media (max-width: 950px) {
-  .form-search {
-    width: 100%;
-    float: left;
-    margin: 0px;
-  }
+.stored-item {
+  margin: 10px;
 }
-@media (max-width: 949px) {
-  .result {
-    float: none;
-  }
-}
-
 
 @media
-only screen and (max-width: 950px),
-(min-device-width: 950px) and (max-device-width: 1024px)  {
+only screen and (max-width: 952px),
+(min-device-width: 952px) and (max-device-width: 1024px)  {
 
-	/* Force table to not be like tables anymore */
+  .panel {
+    flex-direction: column;
+  }
+  .form-search {
+    width: 100%;
+    margin: 0px;
+  }
+
 	table, thead, tbody, th, td, tr {
 		display: block;
     padding: 0;
 	}
   table {
-    float: left;
+    width: 100%;
+    border-top: 5px solid #727B84;
+    background: #F9F9F9;
+    color: #000000;
+    border-right: 2px solid #727B84;
 
   }
 
-	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
+    border-left: 2px solid #727B84;
+    border-bottom: 2px solid #727B84;
 	}
 
-	tr { border: 1px solid #ccc; }
+	tr {
+    border-left: 2px solid #727B84;
+    border-bottom: 2px solid #727B84;
+   }
+   th {
+     font-size: 1.125em;
+     font-weight: bold;
+     text-align: left;
+   }
 
 	td {
-		/* Behave  like a "row" */
 		border: none;
-		border-bottom: 1px solid #eee;
 		position: relative;
 		padding-left: 50%;
 	}
 
 	td:before {
-		/* Now like a table header */
 		position: absolute;
-		/* Top/left values mimic padding */
 		top: 6px;
 		left: 6px;
 		width: 45%;
@@ -162,17 +181,10 @@ only screen and (max-width: 950px),
 		white-space: nowrap;
 	}
 
-	/*
-	Label the data
-	*/
-	td:nth-of-type(1):before { content: "First Name"; }
-	td:nth-of-type(2):before { content: "Last Name"; }
-	td:nth-of-type(3):before { content: "Job Title"; }
-	td:nth-of-type(4):before { content: "Favorite Color"; }
-	td:nth-of-type(5):before { content: "Wars of Trek?"; }
-	td:nth-of-type(6):before { content: "Porn Name"; }
-	td:nth-of-type(7):before { content: "Date of Birth"; }
-	td:nth-of-type(8):before { content: "Dream Vacation City"; }
-	td:nth-of-type(9):before { content: "GPA"; }
-	td:nth-of-type(10):before { content: "Arbitrary Data"; }
+	td:nth-of-type(1):before { content: "Travel By"; }
+	td:nth-of-type(2):before { content: "Leaving"; }
+	td:nth-of-type(3):before { content: "From"; }
+	td:nth-of-type(4):before { content: "Platform"; }
+	td:nth-of-type(5):before { content: "To"; }
+	td:nth-of-type(6):before { content: "Status"; }
 }

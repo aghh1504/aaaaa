@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
 
- class Result extends Component {
+ export default class Result extends Component {
   render() {
     const { services } = this.props
     return (
+      services &&
       <table>
         <thead>
           <tr>
@@ -16,15 +16,11 @@ import { connect } from 'react-redux'
             <th>Status</th>
           </tr>
         </thead>
-
-        {
-
-            services &&
             <tbody>
             {
-              this.props.routes[0].trainServices.map(train => {
+              services.map((train,index) => {
                 return (
-                  <tr>
+                  <tr key={`my_key_${index}`}>
                     <td>{train.operator}</td>
                     <td>{train.sta}</td>
                     <td>{train.destination[0].locationName}</td>
@@ -36,17 +32,7 @@ import { connect } from 'react-redux'
               })
             }
             </tbody>
-    }
   </table>
     )
   }
 }
-
-const mapStateToProps = state => {
-  console.log('state i results=', state);
-  return {
-    routes: state.fetchRoutes
-  }
-}
-
-export default connect(mapStateToProps)(Result)

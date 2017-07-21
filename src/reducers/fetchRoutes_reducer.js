@@ -1,9 +1,16 @@
 import { FETCH_ROUTES } from'../actions/Types'
 
-export default function(state=[], action){
+const defaultState = {
+  routes: []
+}
+
+export default function(state = defaultState, action){
   switch (action.type) {
     case FETCH_ROUTES:
-      return [...state, action.payload]
+      return {
+        ...state,
+        routes: action.payload
+      }
   }
   return state
 }

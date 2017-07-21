@@ -8,7 +8,7 @@ export function fetchRoutes(startingPoint, destination) {
   return dispatch => {
     axios.get(`${ROOT_URL}all/${startingPoint}/from/${destination}/?accessToken=483f0018-5d44-46a9-877c-641cbceea080`)
     .then(res => {
-      console.log('res', res.data)
+      console.log('fetchRoutes result: ', res.data)
       dispatch({type: FETCH_ROUTES, payload: res.data})
     })
     .catch((err) => console.log(err))
